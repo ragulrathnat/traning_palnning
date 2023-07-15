@@ -1,0 +1,25 @@
+Unicode code Tamil has code positions only for 31 out of 247 Tamil Characters. These 31 characters include 12 vowels, 18 agara-uyirmey, one aytham, not including five Grantha agara-uyirmey which are also provided code space in Unicode Tamil. The other Tamil Characters have to be rendered using a separate software. Only 10% of the Tamil Characters are provided code space in the Present Unicode Tamil. 90% of the Tamil Characters that are used in general text interchange are not provided code spac
+The Uyir-meys that are left out in the present Unicode Tamil are simple characters, just like A, B, C, D are characters to English. Uyir-meys are not glyphs, nor ligatures, nor conjunct characters as assumed in Unicode. ka, kA, ki, kI, etc., are characters to T
+In any plain Tamil text, Vowel Consonants (uyir-meys) form 64 to 70%; Vowels (uyir) form 5 to 6% and Consonants (meys) form 25 to 30%. Breaking high frequency letters like vowel-consonants into glyphs is highly inefficient.
+This type of encoding, which requires a rendering engine to realize a character while computing, is not suitable for applications like system software developments in Tamil, searching and sorting and Natural language processing (NLP) in Tamil. It consumes extra time and space, making the computing process highly inefficient. For such applications Level-1 implementation where all the characters of a language have code positions in the encoding, like English, is required.
+This encoding is based on ISCII (1988) and therefore, the characters are not in the natural order of sequence. It requires a complex collation algorithm for arranging them in the natural order of sequence.
+It uses multiple code points to render single characters. Multiple code points lead to security vulnerabilities, ambiguous combinations and requires the use of normalization.
+Simple counting letters, sorting, searching are inefficient.
+It requires ZWJ/ZWNJ type hidden characters.
+It needs exception table to prevent illegal combinations of code points.
+Unicode Indic block is built on enormous, complex, error-prone edifice, based on an encoding that is NOT built to last.
+Very first code point says "Tamil Sign Anusvara - Not used in Tamil".
+Assumed collation was same as Devanagari - incorrectly uses ambiguous encoding to render same character.
+It encodes 23 Vowel-Consonants (23 consonants + Ü) and calls them as consonants, against Tamil grammar.
+Unnatural for Speech to Text/Text to Speech.
+Inefficient to store, transmit and retrieval (For example, file reading and writing, Internet, etc.).
+Complex processing hinders development.
+Need normalization for string comparison.
+A sequence of characters may correspond to a single glyph, that is, ச + ெ◌ + ◌ா = ெசா. Characters are not graphemes. According to Unicode ெசா is a grapheme; but ச, ெ◌, ◌ா are characters.
+Requires Dynamic Composition - a text element encoded as a sequence of a base character followed by one or more combining marks.
+There are two methods of rendering the Vowel Consonants. This leads to ambiguity in rendering characters.
+The present Unicode is not efficient for parsing. For example, the name திருவள்ளுவர் looks like it should have seven letters. However, according to Unicode, this name has twelve characters: த ◌ி ர ◌ு வ ள ◌் ள ◌ு வ ர ◌
+To properly count the letters in this name, an expert developer had to write a complex program and present it as a technical paper in a Tamil computing conference. To compare, counting letters in an English word is an exercise left to a beginning programmer. Such problems are triggered because a simple script such as Tamil is treated as a complex script by Unicode. For example in Python library open-tamil,[5] which uses present Unicode Standard for Tamil, in order to count the number of Tamil letters in the given text, the function tamil.utf8.get_letters is first used to parse the text into a List and then returns the length of the list as the count of the number of letters.[6] This type of complex programming logic or extra additional layer of framework requirement is needed when a simple script such as Tamil is treated as a complex script.
+The Unicode standard policy is to encode only characters, not glyphs. However,[7] because Unicode Tamil standard includes the vowel signs as combining characters. These signs that have no meaning to a Tamil reader would be displayed as is by character-shaping engines that detect a blank space between them and a base character. Thus Unicode introduces the dotted circle as a Tamil character.
+Unicode Tamil is not fully supported in many platforms primarily because Tamil is treated as a complex script that requires complex processing.
+Since all the above-mentioned inefficiencies consume more processing cycles of a processor for a machine than needed, it will increase the overall lifetime power usage (electricity) by a machine which processes Unicode Tamil. For example, when processing a single Tamil character kI (கீ), it has to process both consonant and vowel modifier, which doubles the consumption of processing cycles of a processor.
